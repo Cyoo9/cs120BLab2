@@ -14,11 +14,20 @@
 
 int main(void) {
     /* Insert DDR and PORT initializations */
-    DDRB = 0xFF;
+    DDRA = 0x00;
+    PORTA = 0xFF;
+    DDRB = 0xFF; 
     PORTB= 0x00;
-    /* Insert your solution below */
+    
+    unsigned char tempB = 0x00; //LED light temp var
+    unsigned char tempA = 0x00; //input 
+
     while (1) {
-	PORTB = 0x0F;
+	tempA = PINA & 0x03;
+	if(tempA == 0x01) {
+		tempB = 0x01;
+	}
+    	PORTB = tempB;
     }
-    return 1;
+    return 0;
 }
