@@ -28,8 +28,8 @@ int main(void) {
 	if(PINA & 0x04) { cntavail--; }
 	if(PINA & 0x08) { cntavail--; }
 	
-	PORTC = cntavail; //available spaces (ex 2)
 	if(cntavail == 0) { PORTC = PORTC | 0x80; }
+	else { PORTC = cntavail; }
     }
     return 0;
 }

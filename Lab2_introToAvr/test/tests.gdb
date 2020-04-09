@@ -5,8 +5,16 @@ setPINA 0xFF
 setPINB 0x00
 setPINC 0x00
 continue 5
-expectPORTD 0xFD
+expectPORTD 0xFF
 checkResult
+
+test "Weight 100; A and C diff < 80. => PORTD: 0x64"
+setPINA 0x40
+setPINB 0x10
+setPINC 0x14
+continue 5
+expectPORTD 0x64
+checkResult 
 
 
 
