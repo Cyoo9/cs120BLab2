@@ -1,11 +1,11 @@
 # Test file for "Project name: Lab2_introToAV Partners name [none]:"
 
 test "Weight 255; A and C diff > 80. => PORTD: 0xFF"
-setPINA 0xF0
+setPINA 0xFF
 setPINB 0x00
 setPINC 0x00
 continue 5
-expectPORTD 0xFF
+expectPORTD 0xFD
 checkResult
 
 

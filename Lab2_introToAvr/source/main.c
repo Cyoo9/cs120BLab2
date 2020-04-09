@@ -32,8 +32,8 @@ int main(void) {
 	    PORTD = 0x01; 
 	}
 
-	if(PINA - PINC > maxWeightDiff || PINC - PINA > maxWeightDiff) {
-	    PORTD = PORTD | 0x02;
+	if((PINA - PINC) > maxWeightDiff || PINC - PINA > maxWeightDiff) {
+	    PORTD = PIND | 0x02;
 	}
 	
  	// set last 3 bits to 0 since it's reserved for above cases
