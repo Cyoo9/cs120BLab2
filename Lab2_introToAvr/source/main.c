@@ -21,23 +21,23 @@ int main(void) {
 
     unsigned char maxWeight;
     unsigned char maxWeightDiff;
-    unsigned char weightDiff;
+    unsigned char finalWeight;
 
     while (1) {
 	maxWeight = 0x8C; //1000 1100 represents 140kg 
 	maxWeightDiff = 0x50; // 0101 0000 represents 80kg
+	finalWeight = 0x00;
 
-	if(PINA > maxWeight || PINB > maxWeight || PINC > maxWeight) {
+	if(PINA + PINB + PINC > maxWeight) {
 	    PORTD = 0x01; 
 	}
-	
-	weightDiff = PINA - PINB;
 
-	if(weightDiff > maxWeightDiff) {
+	if(PINA - PINC > maxWeightDiff || PINC - PINA > maxWeightDiff) {
 	    PORTD = PORTD | 0x02;
 	}
 	
-		
+ 	// set last 3 bits to 0 since it's reserved for above cases
+	PORTD = PORTD | ((PINA + PINB + PINC) & 0xFC);  	
 	
     }
     return 0;

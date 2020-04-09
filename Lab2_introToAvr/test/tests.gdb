@@ -1,28 +1,16 @@
 # Test file for "Project name: Lab2_introToAV Partners name [none]:"
 
-test "PINA: 0x00 => PORTB: 0x00"
-setPINA 0x00
+test "Weight 255; A and C diff > 80. => PORTD: 0xFF"
+setPINA 0xF0
+setPINB 0x00
+setPINC 0x00
 continue 5
-expectPORTB 0x00
+expectPORTD 0xFF
 checkResult
 
-test "PINA: 0x01 => PORTB: 0x01"
-setPINA 0x01
-continue 5
-expectPORTB 0x01
-checkResult
 
-test "PINA: 0x03 => PORTC: 0x00"
-setPINA 0x03
-continue 5
-expectPORTC 0x00
-checkResult
 
-test "PINA: 0x04 => PORTC: 0x80"
-setPINA 0x04
-continue 5
-expectPORTC 0x80
-checkResult
+
 
 
 
