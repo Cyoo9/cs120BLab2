@@ -15,21 +15,30 @@
 int main(void) {
     /* Insert DDR and PORT initializations */
     DDRA = 0x00; PORTA = 0xFF;
-    DDRB = 0xFF; PORTB= 0x00;
-    DDRC = 0xFF; PORTC = 0x00;
-     
-    unsigned char cntavail;
+    DDRB = 0x00; PORTB= 0xFF;
+    DDRC = 0x00; PORTC = 0xFF;
+    DDRC = 0xFF; PORTD = 0x00; 
+
+    unsigned char maxWeight;
+    unsigned char maxWeightDiff;
+    unsigned char weightDiff;
 
     while (1) {
-	cntavail = 0x04;
+	maxWeight = 0x8C; //1000 1100 represents 140kg 
+	maxWeightDiff = 0x50; // 0101 0000 represents 80kg
+
+	if(PINA > maxWeight || PINB > maxWeight || PINC > maxWeight) {
+	    PORTD = 0x01; 
+	}
 	
-	if(PINA & 0x01) { cntavail--; }
-	if(PINA & 0x02) { cntavail--; }
-	if(PINA & 0x04) { cntavail--; }
-	if(PINA & 0x08) { cntavail--; }
+	weightDiff = PINA - PINB;
+
+	if(weightDiff > maxWeightDiff) {
+	    PORTD = PORTD | 0x02;
+	}
 	
-	PORTC = cntavail; //available spaces (ex 2)
-	if(cntavail == 0) { PORTC = PORTC | 0x80; }
+		
+	
     }
     return 0;
 }
