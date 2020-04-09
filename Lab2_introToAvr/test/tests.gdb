@@ -12,10 +12,16 @@ continue 5
 expectPORTB 0x01
 checkResult
 
-test "PINA: 0x03 => PORTC: 0x02"
+test "PINA: 0x03 => PORTC: 0x00"
 setPINA 0x03
 continue 5
-expectPORTC 0x02
+expectPORTC 0x00
+checkResult
+
+test "PINA: 0x04 => PORTC: 0x80"
+setPINA 0x04
+continue5
+expectPORTC 0x80
 checkResult
 
 
