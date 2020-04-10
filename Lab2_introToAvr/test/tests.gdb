@@ -1,39 +1,29 @@
 # Test file for "Project name: Lab2_introToAV Partners name [none]:"
 
-#test "Weight 255; A and C diff > 80. => PORTD: 0xFF"
-#setPINA 0xFF
-#setPINB 0x00
-#setPINC 0x00
-#continue 5
-#expectPORTD 0xFF
-#checkResult
-
-#test "Weight 100; A and C diff < 80. => PORTD: 0x64"
-#setPINA 0x40
-#setPINB 0x10
-#setPINC 0x14
-#continue 5
-#expectPORTD 0x64
-#checkResult 
-
-test "PINA: 0x00 => PORTC: 0x00"
-setPINA 0x00
+test "PINA 0xF0 PINB 0x0F PINC 0x00 => PORTD: 0xFF"
+setPINA 0xF0
+setPINB 0x0F
+setPINC 0x00
 continue 5
-expectPORTC 0x04
+expectPORTD 0xFF
 checkResult
 
-test "PINA: 0x04 => PORTC: 0x80"
-setPINA 0x04
+test "PINA 0x30 PINB 0x20 PINC 0x10 => PORTD: 0x60"
+setPINA 0x30
+setPINB 0x20
+setPINC 0x10
 continue 5
-expectPORTC 0x80
+expectPORTD 0x60
 checkResult
 
-
-
-
-
-
-i 
+TEST "PINA 0x01 PINB 0X02 PINC 0X03 => PORTD: 0X07"
+setPINA 0x01
+setPINB 0x02
+setPINC 0x03
+continue 5
+expectPORTD 0x06
+checkResult
+ 
 # commands.gdb provides the following functions for ease:
 #   test "<message>"
 #       Where <message> is the message to print. Must call this at the beginning of every test
