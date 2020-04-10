@@ -16,12 +16,12 @@ continue 5
 expectPORTD 0x60
 checkResult
 
-TEST "PINA 0x01 PINB 0X02 PINC 0X03 => PORTD: 0X07"
+TEST "PINA 0x01 PINB 0X02 PINC 0X03 => PORTD: 0X06"
 setPINA 0x01
 setPINB 0x02
 setPINC 0x03
 continue 5
-expectPORTD 0x06
+expectPORTD 0x04
 checkResult
  
 # commands.gdb provides the following functions for ease:

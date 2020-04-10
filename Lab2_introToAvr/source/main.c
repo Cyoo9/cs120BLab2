@@ -20,22 +20,24 @@ int main(void) {
     DDRD = 0xFF; PORTD = 0x00;
 
     unsigned char maxWeight;
-    unsigned char maxWeightDiff;
+    unsigned char maxWeightDiff; 
+    unsigned char tempD;
 
     while (1) {
+	tempD = 0x00;	
         maxWeight = 0x8C; //140kg 
         maxWeightDiff = 0x50; //80kg
 
         if(PINA + PINB + PINC > maxWeight) {
-            PORTD = 0x01;
+            tempD = 0x01;
         }
 
         if(((PINA - PINC) > maxWeightDiff) || ((PINC - PINA) > maxWeightDiff)) {
-            PORTD = PORTD | 0x02;
+            tempD = tempD | 0x02;
         }
 
-        PORTD = PORTD | ((PINA + PINB + PINC) & 0xFC); //zero out PD1 and PD0 since they are reserved, then OR it with the reserved vals
-
+        tempD = tempD | ((PINA + PINB + PINC) & 0xFC); //zero out PD1 and PD0 since they are reserved, then OR it with the reserved vals
+	PORTD = tempD;
     }
     return 0;
 }
