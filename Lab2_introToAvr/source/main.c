@@ -52,7 +52,7 @@ int main(void) {
     unsigned char cntavail;
 
     while (1) {
-	
+	//PORTC = 0x00;
         cntavail = 0x04;
 
         if(PINA & 0x01) { cntavail--; }

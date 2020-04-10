@@ -16,6 +16,11 @@
 #expectPORTD 0x64
 #checkResult 
 
+test "PINA: 0x00 => PORTC: 0x00"
+setPINA 0x00
+continue 5
+expectPORTC 0x04
+checkResult
 
 test "PINA: 0x04 => PORTC: 0x80"
 setPINA 0x04
@@ -28,7 +33,7 @@ checkResult
 
 
 
- 
+i 
 # commands.gdb provides the following functions for ease:
 #   test "<message>"
 #       Where <message> is the message to print. Must call this at the beginning of every test
